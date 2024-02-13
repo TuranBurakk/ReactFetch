@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { PostService, UserService } from './services';
 
 function App() {
+
+  useEffect(() => {
+    PostService.getPosts().then(res => console.log(res))
+    PostService.getPostDetails(1).then(res => console.log(res))
+    PostService.newPost({
+      userId:3,
+      title:'test',
+      body:'test'
+    }).then(res => console.log(res))
+    UserService.getUsers().then(res => console.log(res))
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+   
+    </>
   );
 }
 
